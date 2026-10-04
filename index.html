@@ -1,0 +1,3984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Animal Clues 🐾</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f5;
+    color: #1f2933;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+/* =========================
+   HOME
+========================= */
+
+#homeScreen {
+    min-height: 100vh;
+    padding: 45px 20px;
+}
+
+.home-container {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-right: 8px;
+    border-radius: 18px;
+    background: #315c3b;
+    color: white;
+    box-shadow: 0 6px 18px rgba(49,92,59,0.2);
+}
+
+.subtitle {
+    color: #667085;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   SHARE BUTTON
+========================= */
+
+.share-button {
+    border: none;
+    background: #315c3b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 35px;
+    transition: 0.2s;
+}
+
+.share-button:hover {
+    background: #254a2f;
+    transform: translateY(-2px);
+}
+
+.share-message {
+    min-height: 20px;
+    margin-top: -25px;
+    margin-bottom: 25px;
+    color: #315c3b;
+    font-weight: 600;
+}
+
+/* =========================
+   HOME MENU
+========================= */
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    cursor: pointer;
+    border: 1px solid #e4e7ec;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.menu-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.menu-card h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.menu-card p {
+    margin: 0;
+    color: #667085;
+    line-height: 1.5;
+}
+
+/* =========================
+   CRITTERRANK HOME CARD
+========================= */
+
+.critter-home-card {
+    position: relative;
+}
+
+.critter-logo-small {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 15px;
+    border-radius: 17px;
+    background: #111827;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   GENERAL SCREENS
+========================= */
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 25px 20px 50px;
+}
+
+.screen-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.topbar {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-button {
+    border: none;
+    background: white;
+    padding: 11px 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    border: 1px solid #e4e7ec;
+}
+
+.back-button:hover {
+    background: #f2f4f7;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* =========================
+   DAILY GAME
+========================= */
+
+.game-card {
+    background: white;
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.07);
+    border: 1px solid #e4e7ec;
+}
+
+.game-title {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.game-date {
+    text-align: center;
+    color: #667085;
+    margin-bottom: 30px;
+}
+
+.clue-number {
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.clue-box {
+    background: #f2f7f4;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+}
+
+.guess-area {
+    display: flex;
+    gap: 10px;
+}
+
+.guess-input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 11px;
+    font-size: 16px;
+    outline: none;
+}
+
+.guess-input:focus {
+    border-color: #6b9f7b;
+}
+
+.guess-button {
+    border: none;
+    border-radius: 11px;
+    padding: 0 22px;
+    background: #315c3b;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.guess-button:hover {
+    background: #254a2f;
+}
+
+.message {
+    text-align: center;
+    margin-top: 18px;
+    min-height: 24px;
+    font-weight: 600;
+}
+
+.score {
+    text-align: center;
+    margin-top: 15px;
+    color: #667085;
+}
+
+/* =========================
+   ARCHIVE
+========================= */
+
+.archive-list {
+    max-width: 700px;
+    margin: auto;
+}
+
+.archive-item {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #e4e7ec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.archive-item:hover {
+    transform: translateX(3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+}
+
+.archive-animal {
+    font-weight: 700;
+}
+
+.archive-date {
+    color: #667085;
+    margin-right: 12px;
+}
+
+.archive-arrow {
+    font-size: 20px;
+}
+
+/* =========================
+   NAME THEM ALL
+========================= */
+
+.name-many-card {
+    background: white;
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.07);
+    border: 1px solid #e4e7ec;
+    text-align: center;
+}
+
+.name-many-title {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.name-many-description {
+    color: #667085;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.name-many-timer {
+    font-size: 58px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.name-many-score {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.solutions-left {
+    color: #667085;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.name-many-start {
+    border: none;
+    background: #315c3b;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.name-many-start:hover {
+    background: #254a2f;
+}
+
+.name-many-input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.name-many-input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 11px;
+    font-size: 16px;
+    outline: none;
+}
+
+.name-many-submit {
+    border: none;
+    border-radius: 11px;
+    padding: 0 22px;
+    background: #315c3b;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.name-many-submit:disabled,
+.name-many-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.name-many-message {
+    min-height: 25px;
+    margin: 18px 0;
+    font-weight: 600;
+}
+
+.name-many-answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.name-many-tag {
+    background: #eef6f0;
+    border: 1px solid #cfe1d3;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.name-many-solutions {
+    display: none;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #e4e7ec;
+}
+
+.name-many-solutions h3 {
+    margin-top: 0;
+}
+
+.name-many-solution-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0 25px;
+}
+
+.solution-tag {
+    background: #f2f4f7;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.name-many-archive-item {
+    background: white;
+    border: 1px solid #e4e7ec;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.name-many-archive-item:hover {
+    transform: translateX(3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+}
+
+.name-many-archive-title {
+    font-weight: 700;
+}
+
+.name-many-archive-date {
+    color: #667085;
+    margin-right: 12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        font-size: 38px;
+    }
+
+    .game-card,
+    .name-many-card {
+        padding: 25px 20px;
+    }
+
+    .topbar {
+        margin-bottom: 20px;
+    }
+
+    .page-title {
+        font-size: 18px;
+    }
+
+    .guess-area,
+    .name-many-input-area {
+        flex-direction: column;
+    }
+
+    .guess-button,
+    .name-many-submit {
+        padding: 13px;
+    }
+
+    .name-many-timer {
+        font-size: 50px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HOME
+========================= -->
+
+<div id="homeScreen">
+
+    <div class="home-container">
+
+        <div class="logo">
+            <span class="logo-mark">🐾</span>
+            Animal Clues
+        </div>
+
+        <div class="subtitle">
+            Test your animal knowledge.
+        </div>
+
+        <button
+            class="share-button"
+            onclick="shareGame()"
+        >
+            🔗 Share Game
+        </button>
+
+        <div
+            id="shareMessage"
+            class="share-message"
+        ></div>
+
+        <div class="menu">
+
+            <div class="menu-card" onclick="openTodayGame()">
+
+                <div class="menu-icon">🔎🐾</div>
+
+                <h2>Animal Clues</h2>
+
+                <p>
+                    Guess today's animal from seven clues.
+                </p>
+
+            </div>
+
+
+            <div class="menu-card" onclick="openArchive()">
+
+                <div class="menu-icon">📚🐾</div>
+
+                <h2>Archive</h2>
+
+                <p>
+                    Play previous daily animal challenges.
+                </p>
+
+            </div>
+
+
+            <div class="menu-card" onclick="openNameManyArchive()">
+
+                <div class="menu-icon">⏱️🐒</div>
+
+                <h2>Name Them All</h2>
+
+                <p>
+                    Name as many animals as you can before time runs out.
+                </p>
+
+            </div>
+
+
+            <div
+                class="menu-card critter-home-card"
+                onclick="openCritterRank()"
+            >
+
+                <div class="critter-logo-small">
+                    🐾
+                </div>
+
+                <h2>CritterRank</h2>
+
+                <p>
+                    Give an animal name and see how rare your answer is.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DAILY GAME
+========================= -->
+
+<div id="gameScreen" class="screen">
+
+    <div class="topbar">
+
+        <button
+            class="back-button"
+            onclick="goHome()"
+        >
+            ← Home
+        </button>
+
+        <div class="page-title">
+            🔎 Animal Clues
+        </div>
+
+    </div>
+
+    <div class="screen-container">
+
+        <div class="game-card">
+
+            <div class="game-title">
+                🐾 Daily Animal
+            </div>
+
+            <div
+                id="gameDate"
+                class="game-date"
+            ></div>
+
+            <div
+                id="clueNumber"
+                class="clue-number"
+            ></div>
+
+            <div
+                id="clueBox"
+                class="clue-box"
+            ></div>
+
+            <div class="guess-area">
+
+                <input
+                    id="guessInput"
+                    class="guess-input"
+                    type="text"
+                    placeholder="What animal am I?"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="guess-button"
+                    onclick="submitGuess()"
+                >
+                    Guess
+                </button>
+
+            </div>
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+            <div
+                id="score"
+                class="score"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DAILY ARCHIVE
+========================= -->
+
+<div id="archiveScreen" class="screen">
+
+    <div class="topbar">
+
+        <button
+            class="back-button"
+            onclick="goHome()"
+        >
+            ← Home
+        </button>
+
+        <div class="page-title">
+            📚 Archive
+        </div>
+
+    </div>
+
+    <div class="screen-container">
+
+        <div
+            id="archiveList"
+            class="archive-list"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ARCHIVED DAILY GAME
+========================= -->
+
+<div id="archiveGameScreen" class="screen">
+
+    <div class="topbar">
+
+        <button
+            class="back-button"
+            onclick="openArchive()"
+        >
+            ← Archive
+        </button>
+
+        <div class="page-title">
+            🔎 Animal Clues
+        </div>
+
+    </div>
+
+    <div class="screen-container">
+
+        <div class="game-card">
+
+            <div class="game-title">
+                🐾 Daily Animal
+            </div>
+
+            <div
+                id="archiveGameDate"
+                class="game-date"
+            ></div>
+
+            <div
+                id="archiveClueNumber"
+                class="clue-number"
+            ></div>
+
+            <div
+                id="archiveClueBox"
+                class="clue-box"
+            ></div>
+
+            <div class="guess-area">
+
+                <input
+                    id="archiveGuessInput"
+                    class="guess-input"
+                    type="text"
+                    placeholder="What animal am I?"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="guess-button"
+                    onclick="submitArchiveGuess()"
+                >
+                    Guess
+                </button>
+
+            </div>
+
+            <div
+                id="archiveMessage"
+                class="message"
+            ></div>
+
+            <div
+                id="archiveScore"
+                class="score"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TIMED ARCHIVE
+========================= -->
+
+<div id="nameManyArchiveScreen" class="screen">
+
+    <div class="topbar">
+
+        <button
+            class="back-button"
+            onclick="goHome()"
+        >
+            ← Home
+        </button>
+
+        <div class="page-title">
+            📚 Timed Archive
+        </div>
+
+    </div>
+
+    <div class="screen-container">
+
+        <div id="nameManyArchiveList"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NAME THEM ALL GAME
+========================= -->
+
+<div id="nameManyGameScreen" class="screen">
+
+    <div class="topbar">
+
+        <button
+            class="back-button"
+            onclick="openNameManyArchive()"
+        >
+            ← Archive
+        </button>
+
+        <div class="page-title">
+            ⏱️ Name Them All
+        </div>
+
+    </div>
+
+    <div class="screen-container">
+
+        <div class="name-many-card">
+
+            <div class="name-many-title">
+                🐒 Arboreal Primates
+            </div>
+
+            <div class="name-many-description">
+                Name as many arboreal primates as you can in 60 seconds.
+            </div>
+
+            <div
+                id="nameManyTimer"
+                class="name-many-timer"
+            >
+                60
+            </div>
+
+            <div class="name-many-score">
+                Score:
+                <span id="nameManyScore">0</span>
+            </div>
+
+            <div class="solutions-left">
+                Solutions left:
+                <span id="solutionsLeft">0</span>
+            </div>
+
+            <button
+                id="nameManyStartButton"
+                class="name-many-start"
+                onclick="startNameManyGame()"
+            >
+                Start Game
+            </button>
+
+            <div class="name-many-input-area">
+
+                <input
+                    id="nameManyInput"
+                    class="name-many-input"
+                    type="text"
+                    placeholder="Type an animal..."
+                    autocomplete="off"
+                    disabled
+                >
+
+                <button
+                    id="nameManySubmit"
+                    class="name-many-submit"
+                    onclick="submitNameManyAnswer()"
+                    disabled
+                >
+                    Add
+                </button>
+
+            </div>
+
+            <div
+                id="nameManyMessage"
+                class="name-many-message"
+            ></div>
+
+            <div
+                id="nameManyAnswers"
+                class="name-many-answers"
+            ></div>
+
+            <div
+                id="nameManySolutions"
+                class="name-many-solutions"
+            >
+
+                <h3>🐾 Solutions</h3>
+
+                <div
+                    id="nameManySolutionList"
+                    class="name-many-solution-list"
+                ></div>
+
+                <button
+                    class="name-many-start"
+                    onclick="startNameManyGame()"
+                >
+                    Play Again
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SHARE GAME
+========================================================= */
+
+async function shareGame() {
+
+    const shareData = {
+        title: "Animal Clues 🐾",
+        text: "Try my animal games! 🐾 CritterRank, Animal Clues and Name Them All.",
+        url: window.location.href
+    };
+
+    const message =
+        document.getElementById("shareMessage");
+
+    try {
+
+        if (
+            navigator.share &&
+            window.location.protocol !== "file:"
+        ) {
+
+            await navigator.share(shareData);
+
+            message.textContent =
+                "Shared! 🐾";
+
+        } else {
+
+            await navigator.clipboard.writeText(
+                window.location.href
+            );
+
+            message.textContent =
+                "Link copied! 📋 Send it to your friend.";
+
+        }
+
+    } catch (error) {
+
+        if (
+            error.name === "AbortError"
+        ) {
+            return;
+        }
+
+        try {
+
+            await navigator.clipboard.writeText(
+                window.location.href
+            );
+
+            message.textContent =
+                "Link copied! 📋";
+
+        } catch (copyError) {
+
+            message.textContent =
+                "Copy this page's link and send it to your friend.";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   DAILY ANIMALS
+========================================================= */
+
+const animals = {
+
+    "2026-10-04": {
+        answer: "orangutan",
+        clues: [
+            "My lineage diverged from the lineage leading to humans and African apes millions of years ago.",
+            "I am the most arboreal of the great apes.",
+            "I have unusually long arms adapted for moving through forest canopies.",
+            "I am primarily found in tropical rainforest.",
+            "Wild populations of my genus occur naturally on two islands.",
+            "Adult males can develop prominent cheek pads called flanges.",
+            "My name comes from words meaning 'person of the forest'."
+        ]
+    },
+
+    "2026-10-05": {
+        answer: "saola",
+        clues: [
+            "I belong to a bovine lineage whose evolutionary history is unusually difficult to resolve.",
+            "I was scientifically described only in the 1990s.",
+            "Both males and females possess long, nearly parallel horns.",
+            "I inhabit dense evergreen forests at high elevations.",
+            "I am endemic to the Annamite Range of mainland Southeast Asia.",
+            "I have been found in Vietnam and Laos.",
+            "I am sometimes called the 'Asian unicorn'."
+        ]
+    }
+
+};
+
+
+/* =========================================================
+   DAILY GAME VARIABLES
+========================================================= */
+
+let currentAnimalDate = "";
+let currentAnimal = null;
+let currentClue = 0;
+let currentScore = 0;
+let archiveMode = false;
+
+
+/* =========================================================
+   SOUND
+========================================================= */
+
+function playSound(type) {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
+    const audio = new AudioContext();
+
+    const oscillator = audio.createOscillator();
+    const gain = audio.createGain();
+
+    oscillator.connect(gain);
+    gain.connect(audio.destination);
+
+    if (type === "correct") {
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.setValueAtTime(
+            600,
+            audio.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            1000,
+            audio.currentTime + 0.15
+        );
+
+        gain.gain.setValueAtTime(
+            0.15,
+            audio.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audio.currentTime + 0.5
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audio.currentTime + 0.5
+        );
+
+    } else {
+
+        oscillator.type = "square";
+
+        oscillator.frequency.setValueAtTime(
+            180,
+            audio.currentTime
+        );
+
+        gain.gain.setValueAtTime(
+            0.10,
+            audio.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audio.currentTime + 0.25
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audio.currentTime + 0.25
+        );
+    }
+}
+
+
+/* =========================================================
+   TEXT CLEANING
+========================================================= */
+
+function cleanText(text) {
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[’‘]/g, "'")
+        .replace(/[^a-z0-9\s'-]/g, "")
+        .replace(/\s+/g, " ");
+
+}
+
+
+/* =========================================================
+   LEVENSHTEIN TYPO CHECK
+========================================================= */
+
+function isCloseEnough(input, answer) {
+
+    input = cleanText(input);
+    answer = cleanText(answer);
+
+    if (input === answer) {
+        return true;
+    }
+
+    if (Math.abs(input.length - answer.length) > 2) {
+        return false;
+    }
+
+    const matrix = [];
+
+    for (let i = 0; i <= input.length; i++) {
+        matrix[i] = [i];
+    }
+
+    for (let j = 0; j <= answer.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    for (let i = 1; i <= input.length; i++) {
+
+        for (let j = 1; j <= answer.length; j++) {
+
+            if (input[i - 1] === answer[j - 1]) {
+
+                matrix[i][j] =
+                    matrix[i - 1][j - 1];
+
+            } else {
+
+                matrix[i][j] =
+                    Math.min(
+                        matrix[i - 1][j] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j - 1] + 1
+                    );
+
+            }
+
+        }
+
+    }
+
+    return matrix[input.length][answer.length] <= 2;
+
+}
+
+
+/* =========================================================
+   SCREEN CONTROL
+========================================================= */
+
+function hideAllScreens() {
+
+    document.getElementById("homeScreen").style.display = "none";
+    document.getElementById("gameScreen").style.display = "none";
+    document.getElementById("archiveScreen").style.display = "none";
+    document.getElementById("archiveGameScreen").style.display = "none";
+    document.getElementById("nameManyArchiveScreen").style.display = "none";
+    document.getElementById("nameManyGameScreen").style.display = "none";
+
+    if (typeof critterRankPage !== "undefined") {
+        critterRankPage.style.display = "none";
+    }
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome() {
+
+    hideAllScreens();
+
+    document.getElementById("homeScreen").style.display = "block";
+
+}
+
+
+/* =========================================================
+   DAILY GAME
+========================================================= */
+
+function openTodayGame() {
+
+    hideAllScreens();
+
+    document.getElementById("gameScreen").style.display = "block";
+
+    const today = "2026-10-04";
+
+    startDailyGame(today, false);
+
+}
+
+
+function startDailyGame(date, isArchive) {
+
+    currentAnimalDate = date;
+    currentAnimal = animals[date];
+    currentClue = 0;
+    currentScore = 0;
+    archiveMode = isArchive;
+
+    const inputId =
+        isArchive
+            ? "archiveGuessInput"
+            : "guessInput";
+
+    const input =
+        document.getElementById(inputId);
+
+    input.value = "";
+    input.disabled = false;
+
+    document.querySelector(
+        isArchive
+            ? "#archiveGameScreen .guess-button"
+            : "#gameScreen .guess-button"
+    ).disabled = false;
+
+    input.focus();
+
+    updateDailyGame();
+
+}
+
+
+function updateDailyGame() {
+
+    const prefix =
+        archiveMode
+            ? "archive"
+            : "";
+
+    const clueNumber =
+        document.getElementById(
+            prefix
+                ? "archiveClueNumber"
+                : "clueNumber"
+        );
+
+    const clueBox =
+        document.getElementById(
+            prefix
+                ? "archiveClueBox"
+                : "clueBox"
+        );
+
+    const score =
+        document.getElementById(
+            prefix
+                ? "archiveScore"
+                : "score"
+        );
+
+    const date =
+        document.getElementById(
+            prefix
+                ? "archiveGameDate"
+                : "gameDate"
+        );
+
+    const message =
+        document.getElementById(
+            prefix
+                ? "archiveMessage"
+                : "message"
+        );
+
+    message.textContent = "";
+
+    clueNumber.textContent =
+        "Clue " + (currentClue + 1) + " of 7";
+
+    clueBox.textContent =
+        currentAnimal.clues[currentClue];
+
+    score.textContent =
+        "Current score: " + currentScore;
+
+    const readableDate =
+        new Date(
+            currentAnimalDate + "T00:00:00"
+        ).toLocaleDateString(
+            "en-SG",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+    date.textContent = readableDate;
+
+}
+
+
+function submitGuess() {
+
+    submitDailyGuess(false);
+
+}
+
+
+function submitArchiveGuess() {
+
+    submitDailyGuess(true);
+
+}
+
+
+function submitDailyGuess(isArchive) {
+
+    const inputId =
+        isArchive
+            ? "archiveGuessInput"
+            : "guessInput";
+
+    const messageId =
+        isArchive
+            ? "archiveMessage"
+            : "message";
+
+    const input =
+        document.getElementById(inputId);
+
+    const message =
+        document.getElementById(messageId);
+
+    const guess =
+        cleanText(input.value);
+
+    if (!guess) {
+        return;
+    }
+
+    if (
+        isCloseEnough(
+            guess,
+            currentAnimal.answer
+        )
+    ) {
+
+        const points =
+            7 - currentClue;
+
+        currentScore = points;
+
+        playSound("correct");
+
+        message.textContent =
+            "Correct! 🎉 You scored " +
+            points +
+            " point" +
+            (points === 1 ? "" : "s") +
+            ".";
+
+        document.getElementById(
+            isArchive
+                ? "archiveScore"
+                : "score"
+        ).textContent =
+            "Final score: " + points;
+
+        input.disabled = true;
+
+        document.querySelector(
+            isArchive
+                ? "#archiveGameScreen .guess-button"
+                : "#gameScreen .guess-button"
+        ).disabled = true;
+
+        return;
+
+    }
+
+
+    playSound("wrong");
+
+    if (currentClue < 6) {
+
+        currentClue++;
+
+        message.textContent =
+            "Not quite — here's another clue.";
+
+        input.value = "";
+
+        updateDailyGame();
+
+    } else {
+
+        message.textContent =
+            "The answer was " +
+            currentAnimal.answer +
+            ".";
+
+        input.disabled = true;
+
+        document.querySelector(
+            isArchive
+                ? "#archiveGameScreen .guess-button"
+                : "#gameScreen .guess-button"
+        ).disabled = true;
+
+    }
+
+}
+
+
+/* =========================================================
+   DAILY ARCHIVE
+========================================================= */
+
+function openArchive() {
+
+    hideAllScreens();
+
+    document.getElementById(
+        "archiveScreen"
+    ).style.display = "block";
+
+    showArchive();
+
+}
+
+
+function showArchive() {
+
+    const list =
+        document.getElementById("archiveList");
+
+    list.innerHTML = "";
+
+    Object.keys(animals)
+        .sort()
+        .reverse()
+        .forEach(function(date) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "archive-item";
+
+            item.innerHTML =
+                "<div>" +
+                    "<div class='archive-animal'>" +
+                        "🐾 Daily Animal" +
+                    "</div>" +
+                "</div>" +
+                "<div>" +
+                    "<span class='archive-date'>" +
+                        formatDate(date) +
+                    "</span>" +
+                    "<span class='archive-arrow'>→</span>" +
+                "</div>";
+
+            item.onclick = function() {
+
+                hideAllScreens();
+
+                document.getElementById(
+                    "archiveGameScreen"
+                ).style.display = "block";
+
+                startDailyGame(date, true);
+
+            };
+
+            list.appendChild(item);
+
+        });
+
+}
+
+
+function formatDate(date) {
+
+    return new Date(
+        date + "T00:00:00"
+    ).toLocaleDateString(
+        "en-SG",
+        {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NAME THEM ALL
+========================================================= */
+
+const arborealPrimates = [
+
+    {
+        name: "Orangutan",
+        aliases: ["orangutan", "orangutans"]
+    },
+
+    {
+        name: "Gibbon",
+        aliases: ["gibbon", "gibbons"]
+    },
+
+    {
+        name: "Siamang",
+        aliases: ["siamang", "siamangs"]
+    },
+
+    {
+        name: "Spider monkey",
+        aliases: ["spider monkey", "spider monkeys"]
+    },
+
+    {
+        name: "Howler monkey",
+        aliases: ["howler monkey", "howler monkeys"]
+    },
+
+    {
+        name: "Woolly monkey",
+        aliases: ["woolly monkey", "woolly monkeys"]
+    },
+
+    {
+        name: "Squirrel monkey",
+        aliases: ["squirrel monkey", "squirrel monkeys"]
+    },
+
+    {
+        name: "Capuchin",
+        aliases: [
+            "capuchin",
+            "capuchins",
+            "capuchin monkey",
+            "capuchin monkeys"
+        ]
+    },
+
+    {
+        name: "Marmoset",
+        aliases: ["marmoset", "marmosets"]
+    },
+
+    {
+        name: "Tamarin",
+        aliases: ["tamarin", "tamarins"]
+    },
+
+    {
+        name: "Uakari",
+        aliases: ["uakari", "uakaris"]
+    },
+
+    {
+        name: "Saki",
+        aliases: [
+            "saki",
+            "sakis",
+            "saki monkey",
+            "saki monkeys"
+        ]
+    },
+
+    {
+        name: "Titi monkey",
+        aliases: [
+            "titi",
+            "titi monkey",
+            "titi monkeys"
+        ]
+    },
+
+    {
+        name: "Owl monkey",
+        aliases: [
+            "owl monkey",
+            "owl monkeys",
+            "night monkey",
+            "night monkeys"
+        ]
+    },
+
+    {
+        name: "Muriqui",
+        aliases: ["muriqui", "muriquis"]
+    },
+
+    {
+        name: "Proboscis monkey",
+        aliases: [
+            "proboscis monkey",
+            "proboscis monkeys"
+        ]
+    },
+
+    {
+        name: "Leaf monkey",
+        aliases: [
+            "leaf monkey",
+            "leaf monkeys"
+        ]
+    },
+
+    {
+        name: "Langur",
+        aliases: ["langur", "langurs"]
+    },
+
+    {
+        name: "Snub-nosed monkey",
+        aliases: [
+            "snub-nosed monkey",
+            "snub nosed monkey",
+            "snub-nosed monkeys"
+        ]
+    },
+
+    {
+        name: "Colobus monkey",
+        aliases: [
+            "colobus",
+            "colobus monkey",
+            "colobus monkeys"
+        ]
+    },
+
+    {
+        name: "Guenon",
+        aliases: ["guenon", "guenons"]
+    },
+
+    {
+        name: "Mangabey",
+        aliases: ["mangabey", "mangabeys"]
+    },
+
+    {
+        name: "Macaque",
+        aliases: ["macaque", "macaques"]
+    },
+
+    {
+        name: "Douc",
+        aliases: ["douc", "doucs"]
+    },
+
+    {
+        name: "Patas monkey",
+        aliases: [
+            "patas monkey",
+            "patas monkeys"
+        ]
+    },
+
+    {
+        name: "Vervet monkey",
+        aliases: [
+            "vervet monkey",
+            "vervet monkeys"
+        ]
+    },
+
+    {
+        name: "Gorilla",
+        aliases: ["gorilla", "gorillas"]
+    },
+
+    {
+        name: "Chimpanzee",
+        aliases: [
+            "chimpanzee",
+            "chimpanzees",
+            "chimp"
+        ]
+    },
+
+    {
+        name: "Bonobo",
+        aliases: ["bonobo", "bonobos"]
+    },
+
+    {
+        name: "Tarsier",
+        aliases: ["tarsier", "tarsiers"]
+    },
+
+    {
+        name: "Loris",
+        aliases: ["loris", "lorises"]
+    },
+
+    {
+        name: "Slow loris",
+        aliases: [
+            "slow loris",
+            "slow lorises"
+        ]
+    },
+
+    {
+        name: "Galago",
+        aliases: [
+            "galago",
+            "galagos",
+            "bushbaby",
+            "bushbabies"
+        ]
+    },
+
+    {
+        name: "Lemur",
+        aliases: ["lemur", "lemurs"]
+    },
+
+    {
+        name: "Sifaka",
+        aliases: ["sifaka", "sifakas"]
+    },
+
+    {
+        name: "Indri",
+        aliases: ["indri", "indris"]
+    },
+
+    {
+        name: "Aye-aye",
+        aliases: [
+            "aye-aye",
+            "aye aye"
+        ]
+    },
+
+    {
+        name: "Mouse lemur",
+        aliases: [
+            "mouse lemur",
+            "mouse lemurs"
+        ]
+    }
+
+];
+
+
+/* =========================================================
+   NAME THEM ALL VARIABLES
+========================================================= */
+
+let nameManyTime = 60;
+
+let nameManyTimerInterval = null;
+
+let nameManyPlaying = false;
+
+let nameManyFound = [];
+
+
+/* =========================================================
+   TIMED GAME SOUND
+========================================================= */
+
+function playNameManySound(type) {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) return;
+
+    const audio = new AudioContext();
+
+    const oscillator =
+        audio.createOscillator();
+
+    const gain =
+        audio.createGain();
+
+    oscillator.connect(gain);
+
+    gain.connect(audio.destination);
+
+    if (type === "correct") {
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.setValueAtTime(
+            500,
+            audio.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            850,
+            audio.currentTime + 0.1
+        );
+
+        gain.gain.setValueAtTime(
+            0.12,
+            audio.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audio.currentTime + 0.3
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audio.currentTime + 0.3
+        );
+
+    } else {
+
+        oscillator.type = "square";
+
+        oscillator.frequency.setValueAtTime(
+            150,
+            audio.currentTime
+        );
+
+        gain.gain.setValueAtTime(
+            0.08,
+            audio.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audio.currentTime + 0.2
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audio.currentTime + 0.2
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   TIMED ANSWER CLEANING
+========================================================= */
+
+function cleanNameManyAnswer(text) {
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[’‘]/g, "'")
+        .replace(/[^a-z0-9\s'-]/g, "")
+        .replace(/\s+/g, " ");
+
+}
+
+
+/* =========================================================
+   FIND PRIMATE ANSWER
+========================================================= */
+
+function findPrimateAnswer(input) {
+
+    const cleaned =
+        cleanNameManyAnswer(input);
+
+    for (
+        let i = 0;
+        i < arborealPrimates.length;
+        i++
+    ) {
+
+        const animal =
+            arborealPrimates[i];
+
+        for (
+            let j = 0;
+            j < animal.aliases.length;
+            j++
+        ) {
+
+            if (
+                cleanNameManyAnswer(
+                    animal.aliases[j]
+                ) === cleaned
+            ) {
+
+                return animal;
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+/* =========================================================
+   TIMED ARCHIVE
+========================================================= */
+
+function openNameManyArchive() {
+
+    hideAllScreens();
+
+    document.getElementById(
+        "nameManyArchiveScreen"
+    ).style.display = "block";
+
+    showNameManyArchive();
+
+}
+
+
+function showNameManyArchive() {
+
+    const list =
+        document.getElementById(
+            "nameManyArchiveList"
+        );
+
+    list.innerHTML = "";
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "name-many-archive-item";
+
+    item.innerHTML =
+        "<div>" +
+            "<div class='name-many-archive-title'>" +
+                "🐒 Arboreal Primates" +
+            "</div>" +
+        "</div>" +
+        "<div>" +
+            "<span class='name-many-archive-date'>" +
+                "5 October 2026" +
+            "</span>" +
+            "<span class='archive-arrow'>→</span>" +
+        "</div>";
+
+    item.onclick = function() {
+
+        openNameManyGame();
+
+    };
+
+    list.appendChild(item);
+
+}
+
+
+/* =========================================================
+   OPEN TIMED GAME
+========================================================= */
+
+function openNameManyGame() {
+
+    hideAllScreens();
+
+    document.getElementById(
+        "nameManyGameScreen"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   START TIMED GAME
+========================================================= */
+
+function startNameManyGame() {
+
+    clearInterval(
+        nameManyTimerInterval
+    );
+
+    nameManyTime = 60;
+
+    nameManyPlaying = true;
+
+    nameManyFound = [];
+
+    document.getElementById(
+        "nameManyTimer"
+    ).textContent = "60";
+
+    document.getElementById(
+        "nameManyScore"
+    ).textContent = "0";
+
+    document.getElementById(
+        "solutionsLeft"
+    ).textContent =
+        arborealPrimates.length;
+
+    document.getElementById(
+        "nameManyMessage"
+    ).textContent = "";
+
+    document.getElementById(
+        "nameManyAnswers"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "nameManySolutions"
+    ).style.display = "none";
+
+    document.getElementById(
+        "nameManyStartButton"
+    ).style.display = "none";
+
+    const input =
+        document.getElementById(
+            "nameManyInput"
+        );
+
+    const button =
+        document.getElementById(
+            "nameManySubmit"
+        );
+
+    input.disabled = false;
+
+    button.disabled = false;
+
+    input.value = "";
+
+    input.focus();
+
+    nameManyTimerInterval =
+        setInterval(function() {
+
+            nameManyTime--;
+
+            document.getElementById(
+                "nameManyTimer"
+            ).textContent =
+                nameManyTime;
+
+            if (nameManyTime <= 0) {
+
+                endNameManyGame();
+
+            }
+
+        }, 1000);
+
+}
+
+
+/* =========================================================
+   SUBMIT TIMED ANSWER
+========================================================= */
+
+function submitNameManyAnswer() {
+
+    if (!nameManyPlaying) {
+        return;
+    }
+
+    const input =
+        document.getElementById(
+            "nameManyInput"
+        );
+
+    const message =
+        document.getElementById(
+            "nameManyMessage"
+        );
+
+    const guess =
+        cleanNameManyAnswer(
+            input.value
+        );
+
+    if (!guess) {
+        return;
+    }
+
+    const answer =
+        findPrimateAnswer(guess);
+
+    if (!answer) {
+
+        playNameManySound("wrong");
+
+        message.textContent =
+            "Not on the list ❌";
+
+        input.value = "";
+
+        return;
+    }
+
+    if (
+        nameManyFound.includes(
+            answer.name
+        )
+    ) {
+
+        playNameManySound("wrong");
+
+        message.textContent =
+            "You already got that one!";
+
+        input.value = "";
+
+        return;
+    }
+
+    playNameManySound("correct");
+
+    nameManyFound.push(
+        answer.name
+    );
+
+    document.getElementById(
+        "nameManyScore"
+    ).textContent =
+        nameManyFound.length;
+
+    document.getElementById(
+        "solutionsLeft"
+    ).textContent =
+        arborealPrimates.length -
+        nameManyFound.length;
+
+    message.textContent =
+        "Correct! 🐾";
+
+    const tag =
+        document.createElement("div");
+
+    tag.className =
+        "name-many-tag";
+
+    tag.textContent =
+        answer.name;
+
+    document.getElementById(
+        "nameManyAnswers"
+    ).appendChild(tag);
+
+    input.value = "";
+
+    if (
+        nameManyFound.length ===
+        arborealPrimates.length
+    ) {
+
+        endNameManyGame();
+
+    }
+
+}
+
+
+/* =========================================================
+   END TIMED GAME
+========================================================= */
+
+function endNameManyGame() {
+
+    if (!nameManyPlaying) {
+        return;
+    }
+
+    nameManyPlaying = false;
+
+    clearInterval(
+        nameManyTimerInterval
+    );
+
+    nameManyTimerInterval = null;
+
+    const input =
+        document.getElementById(
+            "nameManyInput"
+        );
+
+    const button =
+        document.getElementById(
+            "nameManySubmit"
+        );
+
+    input.disabled = true;
+
+    button.disabled = true;
+
+    document.getElementById(
+        "nameManyTimer"
+    ).textContent = "0";
+
+    document.getElementById(
+        "nameManyMessage"
+    ).textContent =
+        "Time's up! 🎉 You found " +
+        nameManyFound.length +
+        " out of " +
+        arborealPrimates.length +
+        ".";
+
+    document.getElementById(
+        "nameManyStartButton"
+    ).style.display = "block";
+
+    showNameManySolutions();
+
+}
+
+
+/* =========================================================
+   SHOW SOLUTIONS ONLY AT END
+========================================================= */
+
+function showNameManySolutions() {
+
+    const section =
+        document.getElementById(
+            "nameManySolutions"
+        );
+
+    const list =
+        document.getElementById(
+            "nameManySolutionList"
+        );
+
+    list.innerHTML = "";
+
+    arborealPrimates.forEach(
+        function(animal) {
+
+            const tag =
+                document.createElement("div");
+
+            tag.className =
+                "solution-tag";
+
+            if (
+                nameManyFound.includes(
+                    animal.name
+                )
+            ) {
+
+                tag.textContent =
+                    "✓ " + animal.name;
+
+            } else {
+
+                tag.textContent =
+                    animal.name;
+
+            }
+
+            list.appendChild(tag);
+
+        }
+    );
+
+    section.style.display = "block";
+
+}
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key !== "Enter"
+        ) {
+            return;
+        }
+
+        const dailyGame =
+            document.getElementById(
+                "gameScreen"
+            );
+
+        const archiveGame =
+            document.getElementById(
+                "archiveGameScreen"
+            );
+
+        const timedGame =
+            document.getElementById(
+                "nameManyGameScreen"
+            );
+
+        if (
+            dailyGame.style.display === "block"
+        ) {
+
+            submitGuess();
+
+        } else if (
+            archiveGame.style.display === "block"
+        ) {
+
+            submitArchiveGuess();
+
+        } else if (
+            timedGame.style.display === "block"
+        ) {
+
+            submitNameManyAnswer();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+goHome();
+
+</script>
+
+
+<!-- =====================================================
+     CRITTERRANK
+===================================================== -->
+
+<script>
+
+(function () {
+
+"use strict";
+
+
+/* =====================================================
+   CRITTERRANK — 4 OCTOBER 2026
+===================================================== */
+
+const RANKS = {
+
+    common: {
+        name: "Sloth",
+        emoji: "🦥",
+        points: 10,
+        color: "#9ca3af"
+    },
+
+    rare: {
+        name: "Otter",
+        emoji: "🦦",
+        points: 25,
+        color: "#22c55e"
+    },
+
+    superRare: {
+        name: "Flamingo",
+        emoji: "🦩",
+        points: 50,
+        color: "#3b82f6"
+    },
+
+    epic: {
+        name: "Peacock",
+        emoji: "🦚",
+        points: 75,
+        color: "#a855f7"
+    },
+
+    legendary: {
+        name: "Takin",
+        emoji: "🐐",
+        points: 100,
+        color: "#eab308"
+    }
+
+};
+
+
+/* =====================================================
+   TODAY'S QUESTIONS
+===================================================== */
+
+const QUESTIONS = [
+
+    {
+        text: "🐒 Name a primate",
+
+        answers: {
+
+            common: [
+                "chimpanzee",
+                "gorilla",
+                "orangutan",
+                "baboon",
+                "macaque"
+            ],
+
+            rare: [
+                "gibbon",
+                "mandrill",
+                "capuchin",
+                "spider monkey",
+                "howler monkey",
+                "langur",
+                "colobus monkey",
+                "squirrel monkey",
+                "vervet monkey",
+                "proboscis monkey"
+            ],
+
+            superRare: [
+                "tarsier",
+                "slow loris",
+                "aye aye",
+                "sifaka",
+                "gelada",
+                "uakari",
+                "mangabey",
+                "patas monkey",
+                "night monkey",
+                "indri"
+            ],
+
+            epic: [
+                "muriqui",
+                "douc",
+                "saki",
+                "lion tamarin",
+                "golden snub nosed monkey",
+                "emperor tamarin",
+                "cotton top tamarin",
+                "golden lion tamarin"
+            ],
+
+            legendary: [
+                "likweli",
+                "roloway monkey"
+            ]
+
+        }
+
+    },
+
+
+    {
+        text: "🌊 Name a non-fish animal that lives underwater",
+
+        answers: {
+
+            common: [
+                "dolphin",
+                "whale",
+                "seal",
+                "sea turtle",
+                "octopus"
+            ],
+
+            rare: [
+                "walrus",
+                "sea lion",
+                "squid",
+                "stingray",
+                "jellyfish",
+                "sea otter",
+                "seahorse",
+                "crab",
+                "lobster",
+                "starfish"
+            ],
+
+            superRare: [
+                "cuttlefish",
+                "nautilus",
+                "sea cucumber",
+                "sea anemone",
+                "horseshoe crab",
+                "nudibranch",
+                "sea urchin",
+                "giant clam",
+                "sea snake",
+                "brittle star"
+            ],
+
+            epic: [
+                "vampire squid",
+                "giant isopod",
+                "dumbo octopus",
+                "leafy seadragon",
+                "weedy seadragon",
+                "blue dragon",
+                "sea pig",
+                "giant pacific octopus"
+            ],
+
+            legendary: [
+                "colossal squid",
+                "giant siphonophore"
+            ]
+
+        }
+
+    },
+
+
+    {
+        text: "🕳️ Name an animal that lives in burrows",
+
+        answers: {
+
+            common: [
+                "rabbit",
+                "fox",
+                "badger",
+                "mole",
+                "prairie dog"
+            ],
+
+            rare: [
+                "wombat",
+                "meerkat",
+                "groundhog",
+                "armadillo",
+                "mongoose",
+                "gerbil",
+                "hamster",
+                "ground squirrel",
+                "ferret",
+                "bilby"
+            ],
+
+            superRare: [
+                "aardvark",
+                "pangolin",
+                "naked mole rat",
+                "jerboa",
+                "echidna",
+                "bandicoot",
+                "springhare",
+                "gopher tortoise",
+                "burrowing owl",
+                "pink fairy armadillo"
+            ],
+
+            epic: [
+                "giant armadillo",
+                "sand cat",
+                "long nosed bandicoot",
+                "greater bilby",
+                "mole rat",
+                "burrowing parrot",
+                "spiny tailed lizard"
+            ],
+
+            legendary: [
+                "marsupial mole",
+                "tuatara"
+            ]
+
+        }
+
+    },
+
+
+    {
+        text: "🦌 Name an animal that has horns or antlers",
+
+        answers: {
+
+            common: [
+                "deer",
+                "goat",
+                "sheep",
+                "cow",
+                "moose"
+            ],
+
+            rare: [
+                "antelope",
+                "ibex",
+                "reindeer",
+                "elk",
+                "buffalo",
+                "bison",
+                "ram",
+                "gazelle",
+                "wildebeest",
+                "rhinoceros"
+            ],
+
+            superRare: [
+                "markhor",
+                "mouflon",
+                "chamois",
+                "oryx",
+                "kudu",
+                "hartebeest",
+                "impala",
+                "serow",
+                "takin",
+                "nyala"
+            ],
+
+            epic: [
+                "saiga",
+                "sitatunga",
+                "waterbuck",
+                "bongo",
+                 "gerenuk",
+                "duiker",
+                "addax",
+                "gemsbok",
+                "nilgai",
+                "guar",
+                "anoa"
+            ],
+
+            legendary: [
+                "saola",
+                "four-horned antelope"
+            ]
+
+        }
+
+    },
+
+
+    {
+        text: "💨 Name an animal that can run above 70 km/h",
+
+        answers: {
+
+            common: [
+                "cheetah",
+                "pronghorn",
+                "springbok",
+                "ostrich",
+                "greyhound"
+            ],
+
+            rare: [
+                "gazelle",
+                "wildebeest",
+                "zebra",
+                "hare",
+                "blackbuck",
+                "impala",
+                "hartebeest",
+                "topi",
+                "eland",
+                "quarter horse"
+            ],
+
+            superRare: [
+                "goitered gazelle",
+                "grant's gazelle",
+                "thomson's gazelle",
+                "sable antelope",
+                "gemsbok",
+                "oryx",
+                "red hartebeest",
+                "blue wildebeest",
+                "onager",
+                "kiang"
+            ],
+
+            epic: [
+                "saiga antelope",
+                "guar",
+                "roan antelope",
+                "greater kudu",
+                "common eland",
+                "waterbuck",
+                "addax"
+            ],
+
+            legendary: [
+                "blackbuck",
+                "common ostrich"
+            ]
+
+        }
+
+    }
+
+];
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const STORAGE_KEY =
+    "critterrank_2026_10_04";
+
+let state = null;
+
+try {
+
+    state = JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+    );
+
+} catch (e) {
+
+    state = null;
+
+}
+
+
+if (!state) {
+
+    state = {
+        question: 0,
+        answers: [],
+        used: [],
+        total: 0,
+        complete: false
+    };
+
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+let audioContext = null;
+
+
+function getAudio() {
+
+    if (!audioContext) {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) return null;
+
+        audioContext =
+            new AudioContext();
+
+    }
+
+    if (
+        audioContext.state ===
+        "suspended"
+    ) {
+
+        audioContext.resume();
+
+    }
+
+    return audioContext;
+
+}
+
+
+function tone(
+    frequency,
+    delay,
+    duration,
+    volume,
+    type
+) {
+
+    const ctx = getAudio();
+
+    if (!ctx) return;
+
+    const oscillator =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+    oscillator.type =
+        type || "sine";
+
+    oscillator.frequency.value =
+        frequency;
+
+    gain.gain.setValueAtTime(
+        0.001,
+        ctx.currentTime + delay
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        ctx.currentTime +
+        delay +
+        0.02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        ctx.currentTime +
+        delay +
+        duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+
+    oscillator.start(
+        ctx.currentTime + delay
+    );
+
+    oscillator.stop(
+        ctx.currentTime +
+        delay +
+        duration +
+        0.05
+    );
+
+}
+
+
+function submitSound() {
+
+    tone(
+        520,
+        0,
+        0.15,
+        0.04,
+        "sine"
+    );
+
+}
+
+
+function errorSound() {
+
+    tone(
+        220,
+        0,
+        0.18,
+        0.05,
+        "sawtooth"
+    );
+
+}
+
+
+function rankSound(rank) {
+
+    if (rank === "common") {
+
+        tone(
+            440,
+            0,
+            0.3,
+            0.05
+        );
+
+    }
+
+    else if (rank === "rare") {
+
+        tone(
+            523,
+            0,
+            0.2,
+            0.05
+        );
+
+        tone(
+            659,
+            0.14,
+            0.3,
+            0.06
+        );
+
+    }
+
+    else if (rank === "superRare") {
+
+        tone(
+            523,
+            0,
+            0.2,
+            0.06,
+            "triangle"
+        );
+
+        tone(
+            659,
+            0.12,
+            0.2,
+            0.065,
+            "triangle"
+        );
+
+        tone(
+            784,
+            0.24,
+            0.4,
+            0.075,
+            "triangle"
+        );
+
+    }
+
+    else if (rank === "epic") {
+
+        tone(
+            523,
+            0,
+            0.18,
+            0.06,
+            "triangle"
+        );
+
+        tone(
+            659,
+            0.11,
+            0.18,
+            0.07,
+            "triangle"
+        );
+
+        tone(
+            784,
+            0.22,
+            0.18,
+            0.075,
+            "triangle"
+        );
+
+        tone(
+            1047,
+            0.34,
+            0.5,
+            0.085,
+            "triangle"
+        );
+
+    }
+
+    else {
+
+        tone(
+            523,
+            0,
+            0.18,
+            0.075,
+            "triangle"
+        );
+
+        tone(
+            659,
+            0.12,
+            0.18,
+            0.075,
+            "triangle"
+        );
+
+        tone(
+            784,
+            0.24,
+            0.18,
+            0.08,
+            "triangle"
+        );
+
+        tone(
+            1047,
+            0.36,
+            0.22,
+            0.09,
+            "triangle"
+        );
+
+        tone(
+            1319,
+            0.52,
+            0.65,
+            0.095,
+            "triangle"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveState() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+    );
+
+}
+
+
+/* =====================================================
+   CLEAN ANSWERS
+===================================================== */
+
+function cleanAnswer(text) {
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[’']/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, " ");
+
+}
+
+
+/* =====================================================
+   LEVENSHTEIN
+===================================================== */
+
+function levenshtein(a, b) {
+
+    const matrix = [];
+
+    for (
+        let i = 0;
+        i <= b.length;
+        i++
+    ) {
+
+        matrix[i] = [i];
+
+    }
+
+    for (
+        let j = 0;
+        j <= a.length;
+        j++
+    ) {
+
+        matrix[0][j] = j;
+
+    }
+
+    for (
+        let i = 1;
+        i <= b.length;
+        i++
+    ) {
+
+        for (
+            let j = 1;
+            j <= a.length;
+            j++
+        ) {
+
+            if (
+                b.charAt(i - 1) ===
+                a.charAt(j - 1)
+            ) {
+
+                matrix[i][j] =
+                    matrix[i - 1][j - 1];
+
+            } else {
+
+                matrix[i][j] =
+                    Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+
+            }
+
+        }
+
+    }
+
+    return matrix[b.length][a.length];
+
+}
+
+
+/* =====================================================
+   FIND ANSWER
+===================================================== */
+
+function findAnswer(
+    input,
+    question
+) {
+
+    const typed =
+        cleanAnswer(input);
+
+    const tiers = [
+        "common",
+        "rare",
+        "superRare",
+        "epic",
+        "legendary"
+    ];
+
+    for (
+        const tier of tiers
+    ) {
+
+        for (
+            const answer
+            of question.answers[tier]
+        ) {
+
+            const cleaned =
+                cleanAnswer(answer);
+
+            if (
+                cleaned === typed
+            ) {
+
+                return {
+                    answer: answer,
+                    rank: tier
+                };
+
+            }
+
+            const distance =
+                levenshtein(
+                    typed,
+                    cleaned
+                );
+
+            const limit =
+                typed.length >= 8
+                    ? 2
+                    : 1;
+
+            if (
+                distance <= limit
+            ) {
+
+                return {
+                    answer: answer,
+                    rank: tier
+                };
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+/* =====================================================
+   CREATE CRITTERRANK PAGE
+===================================================== */
+
+const page =
+    document.createElement("div");
+
+page.id =
+    "critterrank-game";
+
+page.style.cssText = `
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:#f5f5f5;
+    overflow:auto;
+    display:none;
+    font-family:Arial,sans-serif;
+`;
+
+
+page.innerHTML = `
+
+    <div style="
+        max-width:760px;
+        margin:auto;
+        padding:25px 18px 50px;
+    ">
+
+        <button
+            id="cr-back"
+            style="
+                border:0;
+                background:none;
+                font-size:16px;
+                cursor:pointer;
+                margin-bottom:20px;
+            "
+        >
+            ← Home
+        </button>
+
+
+        <div style="
+            text-align:center;
+            margin-bottom:10px;
+        ">
+
+            <div style="
+                width:70px;
+                height:70px;
+                margin:0 auto 12px;
+                border-radius:20px;
+                background:#111827;
+                color:white;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:38px;
+                box-shadow:0 8px 20px rgba(0,0,0,.15);
+            ">
+                🐾
+            </div>
+
+            <h1 style="
+                font-size:42px;
+                margin:0;
+            ">
+                CritterRank
+            </h1>
+
+        </div>
+
+
+        <p style="
+            text-align:center;
+            opacity:.65;
+        ">
+            Name an animal. The rarer your answer,
+            the more points you get.
+        </p>
+
+
+        <div
+            id="cr-progress"
+            style="
+                text-align:center;
+                font-weight:bold;
+                margin:25px 0 15px;
+            "
+        ></div>
+
+
+        <div
+            id="cr-card"
+            style="
+                background:white;
+                border-radius:22px;
+                padding:30px;
+                box-shadow:0 8px 30px rgba(0,0,0,.12);
+                text-align:center;
+            "
+        ></div>
+
+    </div>
+`;
+
+
+document.body.appendChild(page);
+
+window.critterRankPage = page;
+
+
+/* =====================================================
+   OPEN CRITTERRANK
+===================================================== */
+
+window.openCritterRank =
+    function () {
+
+        hideAllScreens();
+
+        page.style.display =
+            "block";
+
+        render();
+
+    };
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+document.getElementById(
+    "cr-back"
+).onclick = function () {
+
+    page.style.display =
+        "none";
+
+    goHome();
+
+};
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render() {
+
+    const progress =
+        document.getElementById(
+            "cr-progress"
+        );
+
+    const card =
+        document.getElementById(
+            "cr-card"
+        );
+
+    if (state.complete) {
+
+        renderFinal();
+
+        return;
+
+    }
+
+    const question =
+        QUESTIONS[state.question];
+
+    progress.textContent =
+        "Question " +
+        (state.question + 1) +
+        " of 5";
+
+    card.innerHTML = `
+
+        <div style="
+            font-size:27px;
+            font-weight:bold;
+            margin-bottom:25px;
+        ">
+            ${question.text}
+        </div>
+
+
+        <div style="
+            display:flex;
+            gap:10px;
+        ">
+
+            <input
+                id="cr-input"
+                placeholder="Type an animal..."
+                autocomplete="off"
+                style="
+                    flex:1;
+                    min-width:0;
+                    padding:15px;
+                    border:2px solid #ddd;
+                    border-radius:12px;
+                    font-size:17px;
+                "
+            >
+
+
+            <button
+                id="cr-submit"
+                style="
+                    padding:15px 20px;
+                    border:0;
+                    border-radius:12px;
+                    background:#111827;
+                    color:white;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                Submit
+            </button>
+
+        </div>
+
+
+        <div
+            id="cr-message"
+            style="
+                min-height:30px;
+                margin-top:18px;
+                font-weight:bold;
+            "
+        ></div>
+
+    `;
+
+
+    const input =
+        document.getElementById(
+            "cr-input"
+        );
+
+
+    document.getElementById(
+        "cr-submit"
+    ).onclick =
+        submitAnswer;
+
+
+    input.onkeydown =
+        function (event) {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                submitAnswer();
+
+            }
+
+        };
+
+
+    input.focus();
+
+}
+
+
+/* =====================================================
+   SUBMIT ANSWER
+===================================================== */
+
+function submitAnswer() {
+
+    const input =
+        document.getElementById(
+            "cr-input"
+        );
+
+    const message =
+        document.getElementById(
+            "cr-message"
+        );
+
+    const typed =
+        input.value.trim();
+
+    if (!typed) {
+
+        message.textContent =
+            "🐾 Enter an animal first.";
+
+        errorSound();
+
+        return;
+
+    }
+
+
+    const question =
+        QUESTIONS[state.question];
+
+    const result =
+        findAnswer(
+            typed,
+            question
+        );
+
+
+    if (!result) {
+
+        message.textContent =
+            "❌ That doesn't fit today's challenge.";
+
+        errorSound();
+
+        return;
+
+    }
+
+
+    const clean =
+        cleanAnswer(
+            result.answer
+        );
+
+
+    if (
+        state.used.includes(clean)
+    ) {
+
+        message.textContent =
+            "🔁 You already used that animal.";
+
+        errorSound();
+
+        return;
+
+    }
+
+
+    submitSound();
+
+    state.used.push(clean);
+
+    const rank =
+        RANKS[result.rank];
+
+
+    state.answers.push({
+
+        question:
+            question.text,
+
+        answer:
+            result.answer,
+
+        rank:
+            result.rank,
+
+        points:
+            rank.points
+
+    });
+
+
+    state.total +=
+        rank.points;
+
+
+    saveState();
+
+
+    /* =========================
+       SUSPENSE
+    ========================= */
+
+    const card =
+        document.getElementById(
+            "cr-card"
+        );
+
+
+    card.innerHTML = `
+
+        <div style="
+            min-height:180px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            gap:15px;
+            font-size:20px;
+        ">
+
+            <div style="
+                font-size:50px;
+            ">
+                🔍
+            </div>
+
+
+            <div id="cr-suspense">
+                🔍 Checking...
+            </div>
+
+        </div>
+
+    `;
+
+
+    const suspenseMessages = [
+
+        "🔍 Checking...",
+
+        "🧠 Comparing rarity...",
+
+        "📊 Checking the animal database...",
+
+        "⏳ Determining rank..."
+
+    ];
+
+
+    let suspenseIndex = 0;
+
+
+    const suspenseTimer =
+        setInterval(
+            function () {
+
+                suspenseIndex++;
+
+                if (
+                    suspenseIndex <
+                    suspenseMessages.length
+                ) {
+
+                    document.getElementById(
+                        "cr-suspense"
+                    ).textContent =
+                        suspenseMessages[
+                            suspenseIndex
+                        ];
+
+                }
+
+            },
+            625
+        );
+
+
+    setTimeout(
+        function () {
+
+            clearInterval(
+                suspenseTimer
+            );
+
+            revealAnswer(
+                result,
+                rank
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   REVEAL ANSWER
+===================================================== */
+
+function revealAnswer(
+    result,
+    rank
+) {
+
+    rankSound(
+        result.rank
+    );
+
+
+    const card =
+        document.getElementById(
+            "cr-card"
+        );
+
+
+    card.innerHTML = `
+
+        <div style="
+            min-height:180px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            gap:8px;
+        ">
+
+            <div style="
+                font-size:65px;
+            ">
+                ${rank.emoji}
+            </div>
+
+
+            <div style="
+                color:${rank.color};
+                font-size:32px;
+                font-weight:900;
+            ">
+                ${rank.name}
+            </div>
+
+
+            <div style="
+                opacity:.65;
+                font-size:18px;
+            ">
+                ${result.answer}
+            </div>
+
+
+            <div style="
+                font-size:23px;
+                font-weight:bold;
+            ">
+                +${rank.points} points
+            </div>
+
+        </div>
+
+    `;
+
+
+    setTimeout(
+        function () {
+
+            if (
+                state.question ===
+                QUESTIONS.length - 1
+            ) {
+
+                state.complete =
+                    true;
+
+            } else {
+
+                state.question++;
+
+            }
+
+
+            saveState();
+
+            render();
+
+        },
+        1700
+    );
+
+}
+
+
+/* =====================================================
+   FINAL RESULTS
+===================================================== */
+
+function renderFinal() {
+
+    document.getElementById(
+        "cr-progress"
+    ).textContent =
+        "Today's challenge complete";
+
+
+    const card =
+        document.getElementById(
+            "cr-card"
+        );
+
+
+    let resultsHTML = "";
+
+
+    state.answers.forEach(
+        function (
+            answer,
+            index
+        ) {
+
+            const rank =
+                RANKS[
+                    answer.rank
+                ];
+
+
+            resultsHTML += `
+
+                <div style="
+                    display:flex;
+                    align-items:center;
+                    gap:12px;
+                    text-align:left;
+                    padding:15px;
+                    margin:10px 0;
+                    border-radius:14px;
+                    background:${rank.color}18;
+                    border-left:5px solid ${rank.color};
+                ">
+
+                    <div style="
+                        font-size:32px;
+                    ">
+                        ${rank.emoji}
+                    </div>
+
+
+                    <div style="
+                        flex:1;
+                    ">
+
+                        <div style="
+                            font-size:13px;
+                            opacity:.6;
+                        ">
+                            ${index + 1}.
+                            ${answer.question}
+                        </div>
+
+
+                        <div style="
+                            font-size:18px;
+                            font-weight:bold;
+                        ">
+                            ${answer.answer}
+                        </div>
+
+                    </div>
+
+
+                    <div style="
+                        color:${rank.color};
+                        font-weight:bold;
+                        text-align:right;
+                    ">
+                        ${rank.name}<br>
+                        +${answer.points}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    card.innerHTML = `
+
+        <h2 style="
+            font-size:32px;
+            margin-top:0;
+        ">
+            🎉 Challenge Complete!
+        </h2>
+
+
+        <div style="
+            font-size:48px;
+            font-weight:900;
+            margin:20px;
+        ">
+            ${state.total} / 500
+        </div>
+
+
+        ${resultsHTML}
+
+
+        <button
+            onclick="shareGame()"
+            style="
+                margin-top:20px;
+                border:0;
+                background:#111827;
+                color:white;
+                padding:13px 22px;
+                border-radius:12px;
+                font-weight:bold;
+                cursor:pointer;
+            "
+        >
+            🔗 Share CritterRank
+        </button>
+
+
+        <p style="
+            margin-top:25px;
+            opacity:.6;
+        ">
+            🗓️ Come back tomorrow
+            for a new challenge!
+        </p>
+
+    `;
+
+}
+
+})();
+
+</script>
+
+</body>
+</html>
